@@ -133,6 +133,12 @@ html {
 .hero-animate--5 { animation-delay: 0.7s; }
 .hero-animate--6 { animation-delay: 0.85s; }
 
+.hero-animate--book {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+}
+
 .hero-divider.hero-animate {
   transform-origin: center;
   animation-name: scaleInX;
@@ -408,14 +414,92 @@ body {
   animation: float 18s ease-in-out infinite reverse;
 }
 
-.hero-content {
+.hero-grid {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: minmax(300px, 0.95fr) minmax(360px, 1.1fr);
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .hero-grid {
+    gap: 64px;
+  }
+}
+
+.hero-text {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .hero-text {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-text .hero-divider {
+    margin-inline: 0;
+  }
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .hero-visual {
+    max-width: none;
+    justify-content: flex-end;
+  }
+}
+
+.hero-book-glow {
+  position: absolute;
+  width: 80%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(75, 184, 213, 0.35) 0%,
+    rgba(138, 199, 173, 0.15) 45%,
+    transparent 70%
+  );
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.hero-book {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.35));
+  animation: float 10s ease-in-out infinite;
+}
+
+@media (min-width: 900px) {
+  .hero-book {
+    width: min(100%, 720px);
+  }
 }
 
 .hero-title {
@@ -452,6 +536,12 @@ body {
   font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
+}
+
+@media (min-width: 900px) {
+  .hero-description {
+    max-width: none;
+  }
 }
 
 /* Info Section */
